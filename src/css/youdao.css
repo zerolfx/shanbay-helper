@@ -1,0 +1,23 @@
+#collinsResult .ol .collinsMajorTrans {
+    background: #eff5f8;
+    padding: 5px 5px 5px 5px;
+}
+
+#collinsResult .ol li {
+    list-style: none;
+    text-align: left;
+}
+
+#collinsResult .examples {
+    padding-left: 15px;
+}
+
+#collinsResult .collinsOrder {
+    float: left;
+    margin-left: -15px;
+}
+
+#collinsResult .exampleLists {
+    margin: 15px 0 15px 40px;
+    color: #626262;
+}

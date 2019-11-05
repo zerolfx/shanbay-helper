@@ -1,0 +1,42 @@
+{
+  "name": "Shanbay Helper",
+  "version": "0.0.1",
+  "description": "An extension leads to better shanbay web experiences.",
+  "manifest_version": 2,
+  "background": {
+    "scripts": [
+      "third-party/jquery-3.4.1.js",
+      "src/js/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "css": ["src/css/youdao.css"],
+      "js": [
+        "third-party/jquery-3.4.1.js",
+        "src/js/utils.js",
+        "src/js/merge-notes.js",
+        "src/js/youdao.js"
+      ],
+      "matches": ["https://web.shanbay.com/wordsweb/*"],
+      "all_frames": true
+    },
+    {
+      "matches": ["https://www.shanbay.com/listen/sentence/"],
+      "js": [
+        "third-party/jquery-3.4.1.js",
+        "src/js/utils.js",
+        "src/js/listen-hint.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "cookies",
+    "contextMenus",
+    "activeTab",
+    "tabs",
+    "storage",
+    "notifications",
+    "https://dict.youdao.com/"
+  ]
+}
