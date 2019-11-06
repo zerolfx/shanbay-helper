@@ -21,3 +21,55 @@
     margin: 15px 0 15px 40px;
     color: #626262;
 }
+
+div[class^='StudyPage_studyPage'] {
+    max-width: 1280px;
+}
+
+
+.sidebar-block {
+    margin: 20px;
+    background: #eff5f8;
+}
+
+
+p.via {
+    font-size: 12px;
+}
+
+p.via, span.via {
+    color: #959595;
+}
+
+.wordGroup .contentTitle {
+    font-weight: bold;
+    color: #35a1d4;
+    margin-right: .5em;
+}
+
+.wordGroup .contentTitle a {
+    text-decoration: none;
+    color: #35a1d4;
+}
+
+a:link, a:visited {
+    color: #35a1d4;
+    outline: 0;
+}
+
+.do-detail {
+    color: transparent !important;
+}
+
+#sidebar > p {
+    word-wrap: break-word;
+}
+
+
+.span8 {
+    width: 800px;
+}
+
+.span4 {
+    width: 400px;
+}
