@@ -31,12 +31,6 @@
     }
   ],
   "permissions": [
-    "cookies",
-    "contextMenus",
-    "activeTab",
-    "tabs",
-    "storage",
-    "notifications",
     "https://dict.youdao.com/"
   ]
 }
