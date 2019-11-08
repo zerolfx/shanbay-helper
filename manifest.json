@@ -9,6 +9,7 @@
       "src/js/background.js"
     ]
   },
+  "icons": { "128": "static/icon128.png" },
   "content_scripts": [
     {
       "css": ["src/css/youdao.css"],
