@@ -1,7 +1,7 @@
 {
   "name": "Shanbay Helper",
   "version": "0.0.1",
-  "description": "An extension leads to better shanbay web experiences.",
+  "description": "Collins alternative for shanbay.",
   "manifest_version": 2,
   "background": {
     "scripts": [
