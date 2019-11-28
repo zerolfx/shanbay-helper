@@ -1,5 +1,5 @@
 function sideBar(response) {
-  const main = $('#root > div > div > div > div > div:nth-child(1) > div > div')[0];
+  const main = document.querySelector('.span12');
   main.setAttribute('class', main.className.replace("span12", "span8"));
   main.setAttribute('style', '');
   const side = document.createElement('div');
@@ -10,8 +10,10 @@ function sideBar(response) {
     if (x.html) {
       sideHTML += `
             <div class="sidebar-block">
-              <b>${x.name}</b>
-              ${x.html}
+              <div class="sidebar-content">
+                <b>${x.name}</b>
+                ${x.html}
+              </div>
             </div>
           `
     }
@@ -37,4 +39,4 @@ setInterval(() => {
       rank(response);
     });
   }
-}, 500);
+}, 1000);

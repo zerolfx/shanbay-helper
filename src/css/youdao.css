@@ -1,10 +1,10 @@
 #collinsResult .ol .collinsMajorTrans {
-    background: #eff5f8;
+    /*background: #eff5f8;*/
     padding: 5px 5px 5px 5px;
 }
 
 #collinsResult .ol li {
-    list-style: none;
+    list-style-type: none;
     text-align: left;
 }
 
@@ -28,9 +28,33 @@ div[class^='StudyPage_studyPage'] {
 
 
 .sidebar-block {
-    margin: 20px;
-    background: #eff5f8;
+    background: white;
+    box-shadow: 0 3px 12px 0 #b0b4be;
 }
+
+.sidebar-block ul {
+    list-style-type: none;
+}
+
+.sidebar-content {
+    margin: 10px;
+}
+
+#sidebar > p {
+    word-wrap: break-word;
+}
+
+
+.span8 {
+    width: 800px;
+}
+
+.span4 {
+    width: 400px;
+}
+
+
+/* below is copy from Youdao dict */
 
 
 p.via {
@@ -61,15 +85,3 @@ a:link, a:visited {
     color: transparent !important;
 }
 
-#sidebar > p {
-    word-wrap: break-word;
-}
-
-
-.span8 {
-    width: 800px;
-}
-
-.span4 {
-    width: 400px;
-}
