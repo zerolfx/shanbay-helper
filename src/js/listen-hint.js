@@ -5,7 +5,7 @@ function hint() {
 }
 
 setInterval(function() {
-  const ele = document.querySelector('#test-or-preview > div.operations-container.row-fluid.no-space > div.span2.btn-hint');
+  const ele = document.querySelector('div.span2.btn-hint');
   if (ele && ele.innerText === "提示(1)") {
     ele.setAttribute("data-content", "不消耗提示数（扇贝助手）");
     ele.setAttribute("content", "不消耗提示数（扇贝助手）");

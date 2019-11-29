@@ -12,12 +12,11 @@
   "icons": { "128": "static/icon128.png" },
   "content_scripts": [
     {
-      "css": ["src/css/youdao.css"],
+      "css": ["src/css/words.css"],
       "js": [
         "third-party/jquery-3.4.1.js",
         "src/js/utils.js",
-        "src/js/merge-notes.js",
-        "src/js/youdao.js"
+        "src/js/words.js"
       ],
       "matches": ["https://web.shanbay.com/wordsweb/*"],
       "all_frames": true
@@ -32,6 +31,7 @@
     }
   ],
   "permissions": [
-    "https://dict.youdao.com/"
+    "https://dict.youdao.com/",
+    "https://www.wordsmyth.net/"
   ]
 }
