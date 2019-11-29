@@ -1,6 +1,6 @@
 {
   "name": "扇贝助手重制版",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "为改版后的扇贝单词网页版添加免费的柯林斯释义，额外增加一些小功能以提升用户体验。",
   "manifest_version": 2,
   "background": {
