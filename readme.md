@@ -15,7 +15,7 @@
 
 + 提供插件选项页，支持单独开关所有功能。
 
-### 如何安装
+### 如何安装（仅支持  Chrome 以及 Chromium 内核的浏览器，如 360 极速浏览器）
 
 + 对于能访问 Chrome 应用商店的 Chrome 浏览器用户，请直接访问 [Chrome 应用商店页面](https://chrome.google.com/webstore/detail/扇贝助手重制版/acihicpdedimbfbgeoieoblpojeidlcn)，点击添加到 Chrome 即可（支持自动更新）。
 + 对于不能访问 Chrome 应用商店的非 Chrome 浏览器用户，请前往 [release 页面](https://github.com/zerolfx/shanbay-helper/releases) 下载 crx 文件，双击打开或者拖拽至浏览器内。
