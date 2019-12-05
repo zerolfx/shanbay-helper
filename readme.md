@@ -13,17 +13,27 @@
 
 ### 开发中特性
 
+注：如果没什么人使用的话，将不会更新新特性。
+
 + 提供插件选项页，支持单独开关所有功能。
 
-### 如何安装（仅支持  Chrome 以及 Chromium 内核的浏览器，如 360 极速浏览器）
+### 如何安装
 
 + 对于能访问 Chrome 应用商店的 Chrome 浏览器用户，请直接访问 [Chrome 应用商店页面](https://chrome.google.com/webstore/detail/扇贝助手重制版/acihicpdedimbfbgeoieoblpojeidlcn)，点击添加到 Chrome 即可（支持自动更新）。
-+ 对于不能访问 Chrome 应用商店的非 Chrome 浏览器用户，请前往 [release 页面](https://github.com/zerolfx/shanbay-helper/releases) 下载 crx 文件，双击打开或者拖拽至浏览器内。
++ 对于不能访问 Chrome 应用商店的非 Chrome 浏览器用户（要求是 Chromium 内核的浏览器，如 360 极速浏览器和 QQ 浏览器），请前往 [release 页面](https://github.com/zerolfx/shanbay-helper/releases) 下载 crx 文件，双击打开或者拖拽至浏览器内。
 + 如果以上方法都不行，这里是终极方案：
   + 请前往 [release 页面](https://github.com/zerolfx/shanbay-helper/releases) 下载 zip 文件，解压到某一个本地目录（该目录必须保留，删除后会导致之后安装的插件失效）。
   + 在浏览器的菜单中，找到扩展程序并打开。
   + 勾选“开发者模式”。
   + 选择“加载已解压的扩展程序”并选择刚刚解压后的那个目录，确认后即可完成安装。
+  
+### 题外话
+
++ 为什么要写这个插件？
+  + 作为课程项目
+  + 原有的扇贝 Chrome 插件在扇贝网页版大修之后主要功能失效了，而且作者不再维护（至少好几个月）。
+  + 作为曾经的扇贝用户还是对扇贝有点感情的。
++ 为什么不支持网页查词及添加到生词本功能？因为不想做重复劳动，这里推荐和[这个插件](https://github.com/maicss/chrome-shanbay-v2)配合使用。
 
 ### For Developer
 
