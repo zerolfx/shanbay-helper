@@ -16,16 +16,6 @@ let selectionParentBody = null;
 let offset = null;
 
 
-/**
- * 监听设置变化的事件，如果修改了设置，就更新全局的storage的值
- * */
-chrome.storage.onChanged.addListener(function (changes) {
-  debugLogger('info', 'chrome storage changed');
-  storage = {};
-  changes.__shanbayExtensionSettings.newValue.forEach(item => {
-    Object.assign(storage, item)
-  })
-});
 
 const pendingSearchSelection = (e) => {
   /**

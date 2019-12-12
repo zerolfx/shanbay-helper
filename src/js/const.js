@@ -4,11 +4,6 @@
  * @copyright 2017-2019 maicss
  * */
 
-/**
- * 全局设置对象
- * @type {object}
- * */
-let storage = {};
 
 /** 检测是否是开发模式，用来控制日志的输出
  * @type {boolean}
@@ -152,6 +147,8 @@ const extensionSpecification = [
   { 'reminderContent': '少壮不努力，老大背单词', desc: '提示框内容', },
   { 'autoRead': 'false', desc: '自动发音', enum: ['EN', 'US', 'false'] },
   { 'paraphrase': 'bilingual', desc: '默认释义', enum: ['Chinese', 'English', 'bilingual'] },
+  { 'collins': true, desc: '用柯林斯词典替换扇贝词典', enum: [true, false] },
+  { 'syllabification': true, desc: '在单词详情页显示单词音节划分', enum: [true, false] },
   // {'trend': true, desc: '添加Github trend导航', enum: [true, false]},
 ];
 /**
@@ -209,6 +206,11 @@ const forget = learningId => {
 };
 
 
+/**
+ * 全局设置对象
+ * @type {object}
+ * */
+let storage = storageSettingMap;
 
 /**
  * 从chrome的storage里获取存储的插件的设置，如果有值，就给storage赋值，否者就使用默认的storageSettingMap
@@ -219,11 +221,17 @@ chrome.storage.sync.get('__shanbayExtensionSettings', (settings) => {
     settings.__shanbayExtensionSettings.forEach(item => {
       Object.assign(storage, item)
     })
-  } else {
-    storage = storageSettingMap
   }
+});
 
-  // if (storage.trend && location.href.startsWith('https://github.com')) {
-  //   addTends()
-  // }
+
+/**
+ * 监听设置变化的事件，如果修改了设置，就更新全局的storage的值
+ * */
+chrome.storage.onChanged.addListener(function (changes) {
+  debugLogger('info', 'chrome storage changed');
+  storage = {};
+  changes.__shanbayExtensionSettings.newValue.forEach(item => {
+    Object.assign(storage, item)
+  })
 });

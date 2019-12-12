@@ -1,6 +1,6 @@
 {
   "name": "扇贝助手重制版",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "author": "zerol, maicss, jinntrance",
   "description": "为改版后的扇贝单词网页版添加免费的柯林斯释义，额外增加一些小功能以提升用户体验。",
   "manifest_version": 2,
@@ -22,6 +22,7 @@
       "css": ["src/css/words.css"],
       "js": [
         "third-party/jquery-3.4.1.js",
+        "src/js/const.js",
         "src/js/words.js"
       ],
       "matches": ["https://web.shanbay.com/wordsweb/*"]
