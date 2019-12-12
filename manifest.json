@@ -1,21 +1,25 @@
 {
   "name": "扇贝助手重制版",
   "version": "0.0.3",
+  "author": "zerol, maicss, jinntrance",
   "description": "为改版后的扇贝单词网页版添加免费的柯林斯释义，额外增加一些小功能以提升用户体验。",
   "manifest_version": 2,
   "background": {
     "scripts": [
       "third-party/jquery-3.4.1.js",
+      "src/js/const.js",
       "src/js/background.js"
     ]
   },
   "icons": { "128": "static/icon128.png" },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "css": ["src/css/words.css"],
       "js": [
         "third-party/jquery-3.4.1.js",
-        "src/js/utils.js",
         "src/js/words.js"
       ],
       "matches": ["https://web.shanbay.com/wordsweb/*"],
@@ -25,13 +29,35 @@
       "matches": ["https://www.shanbay.com/listen/sentence/"],
       "js": [
         "third-party/jquery-3.4.1.js",
-        "src/js/utils.js",
         "src/js/listen-hint.js"
+      ]
+    },
+    {
+      "css": [
+        "src/css/popover.css"
+      ],
+      "js": [
+        "src/js/const.js",
+        "src/js/main.js"
+      ],
+      "matches": ["<all_urls>"],
+      "exclude_matches": [
+        "*://*.shanbay.com/*",
+        "*://*.hjenglish.com/*",
+        "*://*.codepen.io/*",
+        "*://*.jsfiddle.net/*",
+        "*://*.jsbin.com/*"
       ]
     }
   ],
   "permissions": [
     "https://dict.youdao.com/",
-    "https://www.wordsmyth.net/"
+    "https://www.wordsmyth.net/",
+    "https://www.shanbay.com/",
+    "cookies",
+    "contextMenus",
+    "tabs",
+    "storage",
+    "notifications"
   ]
 }
