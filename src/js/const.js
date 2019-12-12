@@ -148,7 +148,7 @@ const extensionSpecification = [
   { 'clickLookup': true, desc: '双击选中查词', enum: [true, false] },
   { 'contextLookup': true, desc: '右键查词', enum: [true, false] },
   { 'addBook': false, desc: '默认添加到单词本', enum: [true, false] },
-  { 'alarm': true, desc: '定时提醒', enum: [true, false] },
+  { 'alarm': false, desc: '定时提醒', enum: [true, false] },
   { 'reminderContent': '少壮不努力，老大背单词', desc: '提示框内容', },
   { 'autoRead': 'false', desc: '自动发音', enum: ['EN', 'US', 'false'] },
   { 'paraphrase': 'bilingual', desc: '默认释义', enum: ['Chinese', 'English', 'bilingual'] },
@@ -207,3 +207,23 @@ const forget = learningId => {
     body: JSON.stringify({ forget: 1 })
   })
 };
+
+
+
+/**
+ * 从chrome的storage里获取存储的插件的设置，如果有值，就给storage赋值，否者就使用默认的storageSettingMap
+ * */
+chrome.storage.sync.get('__shanbayExtensionSettings', (settings) => {
+  debugLogger('info', 'chrome storage loaded');
+  if (Object.keys(settings).length) {
+    settings.__shanbayExtensionSettings.forEach(item => {
+      Object.assign(storage, item)
+    })
+  } else {
+    storage = storageSettingMap
+  }
+
+  // if (storage.trend && location.href.startsWith('https://github.com')) {
+  //   addTends()
+  // }
+});

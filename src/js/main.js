@@ -15,23 +15,6 @@ let selectionParentBody = null;
  * */
 let offset = null;
 
-/**
- * 从chrome的storage里获取存储的插件的设置，如果有值，就给storage赋值，否者就使用默认的storageSettingMap
- * */
-chrome.storage.sync.get('__shanbayExtensionSettings', (settings) => {
-  debugLogger('info', 'chrome storage loaded');
-  if (Object.keys(settings).length) {
-    settings.__shanbayExtensionSettings.forEach(item => {
-      Object.assign(storage, item)
-    })
-  } else {
-    storage = storageSettingMap
-  }
-
-  // if (storage.trend && location.href.startsWith('https://github.com')) {
-  //   addTends()
-  // }
-});
 
 /**
  * 监听设置变化的事件，如果修改了设置，就更新全局的storage的值
@@ -123,7 +106,7 @@ const popover = (res) => {
 <div id="shanbay-content">
     <div class="simple-definition">
         ${storage.paraphrase !== 'English' ? (data.cn_definition.pos ? `<div><strong>${data.cn_definition.pos} </strong><span>${data.cn_definition.defn}</span></div>` : data.cn_definition.defn ? data.cn_definition.defn.split('\n').join('<br>') : '' ) : ''}
-        ${ storage.paraphrase !== 'Chinese' ? Object.keys(data.en_definitions).map(pos => `<div><span>${pos}. </span><span>${data.en_definitions[pos].join(';')}</span></div>`).join('') : ''}
+        ${storage.paraphrase !== 'Chinese' ? Object.keys(data.en_definitions).map(pos => `<div><span>${pos}. </span><span>${data.en_definitions[pos].join(';')}</span></div>`).join('') : ''}
     </div>
     <div class="add">
         ${data.learning_id ? `<p id="shanbay-forget-word"><button class="forget shanbay-btn">我忘了</button></p>` : `<p><button id="shanbay-add-word" class="shanbay-btn">添加</button></p>`}

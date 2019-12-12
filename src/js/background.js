@@ -34,7 +34,7 @@ const playSound = url => {
 chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
   switch (req.action) {
     case 'collins':
-      $.get(`https://dict.youdao.com/w/eng/${word}`, (data) => {
+      $.get(`https://dict.youdao.com/w/eng/${req.word}`, (data) => {
         const doc = $('<div></div>');
         doc.html(data);
         const res = {};
@@ -51,7 +51,7 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
       });
       return true;
     case 'wordsmyth':
-      $.get(`https://www.wordsmyth.net/?ent=${word}`, (data) => {
+      $.get(`https://www.wordsmyth.net/?ent=${req.word}`, (data) => {
         const doc = $('<div></div>');
         doc.html(data);
         const res = {};

@@ -13,7 +13,9 @@
   },
   "icons": { "128": "static/icon128.png" },
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_icon": "static/icon128.png",
+    "default_popup": "popup.html",
+    "default_title": "扇贝助手重制版"
   },
   "content_scripts": [
     {
@@ -22,8 +24,7 @@
         "third-party/jquery-3.4.1.js",
         "src/js/words.js"
       ],
-      "matches": ["https://web.shanbay.com/wordsweb/*"],
-      "all_frames": true
+      "matches": ["https://web.shanbay.com/wordsweb/*"]
     },
     {
       "matches": ["https://www.shanbay.com/listen/sentence/"],
@@ -53,7 +54,7 @@
   "permissions": [
     "https://dict.youdao.com/",
     "https://www.wordsmyth.net/",
-    "https://www.shanbay.com/",
+    "*://*.shanbay.com/*",
     "cookies",
     "contextMenus",
     "tabs",
