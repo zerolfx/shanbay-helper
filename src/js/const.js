@@ -145,7 +145,7 @@ const extensionSpecification = [
   { 'addBook': false, desc: '默认添加到单词本', enum: [true, false] },
   { 'alarm': false, desc: '定时提醒', enum: [true, false] },
   { 'reminderContent': '少壮不努力，老大背单词', desc: '提示框内容', },
-  { 'autoRead': 'false', desc: '自动发音', enum: ['EN', 'US', 'false'] },
+  { 'autoRead': 'disable', desc: '自动发音', enum: ['US', 'UK', 'disable'] },
   { 'paraphrase': 'bilingual', desc: '默认释义', enum: ['Chinese', 'English', 'bilingual'] },
   { 'collins': true, desc: '用柯林斯词典替换扇贝词典', enum: [true, false] },
   { 'syllabification': true, desc: '在单词详情页显示单词音节划分', enum: [true, false] },

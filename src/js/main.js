@@ -116,6 +116,9 @@ const popover = (res) => {
       })
     });
 
+    if (storage.autoRead === "US") chrome.runtime.sendMessage({action: 'playSound', url: data.us_audio });
+    if (storage.autoRead === "UK") chrome.runtime.sendMessage({action: 'playSound', url: data.uk_audio });
+
     /** 添加单词和忘记单词的事件处理*/
     if (data.learning_id) {
       document.querySelector('#shanbay-forget-word').addEventListener('click', function () {

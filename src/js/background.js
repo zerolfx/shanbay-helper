@@ -32,6 +32,7 @@ const playSound = url => {
 /*=================================================================*/
 
 chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
+  debugLogger('log', req);
   switch (req.action) {
     case 'collins':
       $.get(`https://dict.youdao.com/w/eng/${req.word}`, (data) => {
@@ -46,7 +47,7 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
           { name: "同根词", html: getOuterHTML(doc.find('#relWordTab')) },
           { name: "词语辨析", html: getOuterHTML(doc.find('#discriminate')) },
         ];
-        console.log(res);
+        debugLogger('log', res);
         sendResponse(res);
       });
       return true;
@@ -56,7 +57,7 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
         doc.html(data);
         const res = {};
         res.syllabification = getInnerHTML(doc.find('.headword.syl'));
-        console.log(res);
+        debugLogger('log', res);
         sendResponse(res);
       });
       return true;
