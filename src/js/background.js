@@ -95,15 +95,17 @@ const getDailyTask = () => {
     taskTimer = setInterval(function () {
       if (!storage.alarm) return clearInterval(taskTimer);
       debugLogger('log', 'send daily task request');
-      request('https://www.shanbay.com/api/v1/bdc/stats/today/').then(r => {
-
-        if (r.data.num_left === 0) {
+      request('https://apiv3.shanbay.com/wordsapp/user_material_books/current').then(r => {
+        debugLogger('log', r);
+        const remain = r.review_count + r.new_count;
+        if (remain === 0) {
           chrome.browserAction.setBadgeText({text: ''})
         } else {
-          chrome.browserAction.setBadgeText({text: r.data.num_left + ''});
+          chrome.browserAction.setBadgeText({text: remain + ''});
           notify({
-            message: `今天还有${r.data.num_left}个单词需要复习`,
-            url: 'https://www.shanbay.com/bdc/review/'
+            title: "背单词提醒",
+            message: `今天还有${remain}个单词需要学习`,
+            url: 'https://web.shanbay.com/wordsweb/#/study/entry'
           })
         }
       }).catch(e => debugLogger('error', 'get daily task failed, cause: ', e))

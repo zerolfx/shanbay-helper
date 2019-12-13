@@ -144,7 +144,6 @@ const extensionSpecification = [
   { 'contextLookup': true, desc: '右键查词', enum: [true, false] },
   { 'addBook': false, desc: '默认添加到单词本', enum: [true, false] },
   { 'alarm': false, desc: '定时提醒', enum: [true, false] },
-  { 'reminderContent': '少壮不努力，老大背单词', desc: '提示框内容', },
   { 'autoRead': 'disable', desc: '自动发音', enum: ['US', 'UK', 'disable'] },
   { 'paraphrase': 'bilingual', desc: '默认释义', enum: ['Chinese', 'English', 'bilingual'] },
   { 'collins': true, desc: '用柯林斯词典替换扇贝词典', enum: [true, false] },
