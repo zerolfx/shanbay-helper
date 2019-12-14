@@ -31,10 +31,10 @@ function renderUser () {
 document.addEventListener('DOMContentLoaded', function () {
   renderUser();
   document.querySelector('#batch-add').onclick = function () {
-    chrome.tabs.create({ url: 'https://www.shanbay.com/bdc/vocabulary/add/batch/' })
+    chrome.tabs.create({ url: 'https://web.shanbay.com/wordsweb/#/collection' })
   };
   document.querySelector('#begin-learning').onclick = function () {
-    chrome.tabs.create({ url: 'https://www.shanbay.com/bdc/review/' })
+    chrome.tabs.create({ url: 'https://web.shanbay.com/wordsweb/#/study/entry' })
   };
   document.querySelector('#options').onclick = function () {
     chrome.tabs.create({ url: 'options.html' })
