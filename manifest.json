@@ -7,6 +7,7 @@
   "background": {
     "scripts": [
       "third-party/jquery-3.4.1.js",
+      "src/js/decode.js",
       "src/js/const.js",
       "src/js/background.js"
     ]
