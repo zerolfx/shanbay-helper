@@ -2,7 +2,7 @@
   "name": "扇贝助手重制版",
   "version": "0.1.2",
   "author": "zerol, maicss, jinntrance",
-  "description": "为改版后的扇贝单词网页版添加免费的柯林斯释义，额外增加一些小功能以提升用户体验。",
+  "description": "为扇贝单词网页版添加免费的柯林斯释义，支持任意网页双击查词并添加到扇贝生词本。",
   "manifest_version": 2,
   "background": {
     "scripts": [
