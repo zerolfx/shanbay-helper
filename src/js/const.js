@@ -72,7 +72,11 @@ const request = (url, options = {}) => {
         if (options.type === 'buffer') return res.arrayBuffer();
         return res.json()
       } else if (res.status === 401) {
-        notify({ title: '扇贝网登录信息已过期', message: '请点击本通知或去扇贝网重新登录，否者将不能使用添加单词、右键查词和背单词提醒等功能。' });
+        notify({
+          title: '扇贝网登录信息已过期',
+          message: '请点击本通知或去扇贝网重新登录，否者将不能使用添加单词、右键查词和背单词提醒等功能。',
+          url: 'https://web.shanbay.com/web/account/login/'
+        });
         debugLogger('error', `[${new Date().toLocaleDateString()}] request failed ${options.method || 'GET'} ${url} ${JSON.stringify(res)}`);
         return Promise.reject({status: 401})
       } else {

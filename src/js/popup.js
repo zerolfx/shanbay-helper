@@ -18,7 +18,6 @@ function renderUser () {
           url: 'https://web.shanbay.com/web/account/login/'
         })
       };
-      alert("!");
       notify({
         title: '没有登录信息',
         message: '没有获取到扇贝网的登录信息，点击登录。',
