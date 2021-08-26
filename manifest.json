@@ -1,6 +1,6 @@
 {
   "name": "扇贝助手重制版",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "zerol, maicss, jinntrance",
   "description": "为扇贝单词网页版添加免费的柯林斯释义，支持任意网页双击查词并添加到扇贝生词本。",
   "manifest_version": 2,

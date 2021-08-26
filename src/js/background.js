@@ -42,10 +42,10 @@ chrome.runtime.onMessage.addListener(function (req, sender, sendResponse) {
         res.collins = getOuterHTML(doc.find('#collinsResult').find('.ol'));
         res.rank = getInnerHTML(doc.find('span.via.rank'));
         res.extra = [
-          { name: "词组短语", html: getOuterHTML(doc.find('#wordGroup')) },
-          { name: "同近义词", html: getOuterHTML(doc.find('#synonyms')) },
-          { name: "同根词", html: getOuterHTML(doc.find('#relWordTab')) },
-          { name: "词语辨析", html: getOuterHTML(doc.find('#discriminate')) },
+          { name: "词组短语", html: getInnerHTML(doc.find('#wordGroup')) },
+          { name: "同近义词", html: getInnerHTML(doc.find('#synonyms')) },
+          { name: "同根词", html: getInnerHTML(doc.find('#relWordTab')) },
+          { name: "词语辨析", html: getInnerHTML(doc.find('#discriminate')) },
         ];
         debugLogger('log', res);
         sendResponse(res);
