@@ -43,17 +43,16 @@ setInterval(() => {
     ele[0].parentElement.setAttribute('id', 'collinsResult');
     const word = $("div[class^='VocabPronounce_word']")[0].innerText;
     chrome.runtime.sendMessage({ action: 'collins', word }, (response) => {
-      if (storage.collins) ele.replaceWith(response.collins);
+      ele.replaceWith(response.collins);
       sideBar(response);
       rank(response);
       mergeNotes();
     });
-    if (storage.syllabification)
-      chrome.runtime.sendMessage({ action: 'wordsmyth', word }, (response) => {
-        console.log(response);
-        if (response.syllabification) {
-          $("div[class^='VocabPronounce_word']").text(response.syllabification);
-        }
-      })
+    chrome.runtime.sendMessage({ action: 'wordsmyth', word }, (response) => {
+      console.log(response);
+      if (response.syllabification) {
+        $("div[class^='VocabPronounce_word']").text(response.syllabification);
+      }
+    });
   }
 }, 1000);
