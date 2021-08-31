@@ -1,6 +1,6 @@
 {
   "name": "扇贝助手重制版",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "zerol",
   "description": "为扇贝单词网页版添加免费的柯林斯释义，以及一些额外的小功能。",
   "manifest_version": 2,
@@ -24,13 +24,6 @@
         "src/js/words.js"
       ],
       "matches": ["https://web.shanbay.com/wordsweb/*"]
-    },
-    {
-      "matches": ["https://www.shanbay.com/listen/sentence/"],
-      "js": [
-        "third-party/jquery-3.4.1.js",
-        "src/js/listen-hint.js"
-      ]
     }
   ],
   "permissions": [
