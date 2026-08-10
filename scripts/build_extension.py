@@ -77,6 +77,13 @@ def validate_manifest() -> dict:
     )
     if missing:
         raise SystemExit(f"Manifest references missing files: {', '.join(missing)}")
+
+    package_members = {path.as_posix() for path in PACKAGE_FILES}
+    unpackaged = sorted(manifest_references(manifest) - package_members)
+    if unpackaged:
+        raise SystemExit(
+            f"Manifest references files not included in the ZIP: {', '.join(unpackaged)}"
+        )
     return manifest
 
 

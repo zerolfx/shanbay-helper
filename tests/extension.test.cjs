@@ -77,7 +77,7 @@ test("manifest uses MV3 with minimal host access", () => {
 
   assert.equal(manifest.manifest_version, 3);
   assert.equal(manifest.background.service_worker, "src/js/background.js");
-  assert.equal(manifest.action.default_popup, undefined);
+  assert.equal(manifest.action, undefined);
   assert.deepEqual(manifest.host_permissions, ["https://dict.youdao.com/*"]);
   assert.equal(manifest.permissions, undefined);
   assert.deepEqual(manifest.content_scripts[0].js, [

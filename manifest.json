@@ -1,15 +1,11 @@
 {
   "manifest_version": 3,
   "name": "扇贝助手重制版",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "zerol",
-  "description": "为扇贝单词网页版补充柯林斯双语释义、断词参考、词组、近义词和词语辨析。",
+  "description": "非官方扇贝网页学习助手：补充有道词典中的柯林斯双语释义、例句、词组、辨析和本地断词参考。",
   "icons": {
     "128": "static/icon128.png"
-  },
-  "action": {
-    "default_icon": "static/icon128.png",
-    "default_title": "扇贝助手重制版"
   },
   "background": {
     "service_worker": "src/js/background.js"
