@@ -1,38 +1,70 @@
-### 特性
+# 扇贝助手重制版
 
-#### 单词详情页
+一个面向当前扇贝单词网页版的 Chrome 扩展。扩展会在单词详情区域补充柯林斯双语释义、例句、词组短语、同近义词和词语辨析。
 
-+ 用柯林斯词典替换了扇贝的内置词典，也就是可以免费享受到柯林斯词典。
-+ 单词显示音节划分。
-+ 增加侧栏用于显示词组短语，同近义词，同根词，词语辨析。
-+ 将“我的笔记”和“共享笔记”合并，我的笔记中的内容会显示在共享笔记的上方。
+当前版本：`0.2.0`（Manifest V3）
 
-### 已知问题
+## 功能
 
-+ 在文本框内选中查词，弹出框位置固定在左上角。
+- 适配 `https://web.shanbay.com/wordsweb/` 当前的单词详情与学习页面。
+- 使用 MutationObserver 跟踪扇贝单页应用中的切词和路由变化，不再每秒轮询页面。
+- 以独立、响应式面板显示柯林斯释义和扩展内容，兼容窄屏与深色模式。
+- 使用随扩展打包的 `hyphen` en-US 规则显示英文断词参考，全程离线，不增加网络权限。它反映书面排版的可断开位置，不保证等同于发音音节。
+- 补充内容成功加载后默认隐藏扇贝原释义，可随时点击“显示扇贝原释义”切换回来。
+- 不再把第三方 HTML 直接插入页面；扩展只读取需要的文本字段，再用本地代码重建界面。
+- 请求失败时保留扇贝原释义，并提供明确错误信息和重试按钮。
 
-### 如何安装
+## 安装
 
-+ 对于能访问 Chrome 应用商店的 Chrome 浏览器用户，请直接访问 [Chrome 应用商店页面](https://chrome.google.com/webstore/detail/扇贝助手重制版/acihicpdedimbfbgeoieoblpojeidlcn)，点击添加到 Chrome 即可（支持自动更新）。
-+ 对于不能访问 Chrome 应用商店的非 Chrome 浏览器用户（要求是 Chromium 内核的浏览器，如 360 极速浏览器和 QQ 浏览器），请前往 [release 页面](https://github.com/zerolfx/shanbay-helper/releases) 下载 crx 文件，双击打开或者拖拽至浏览器内。
-+ 如果以上方法都不行，这里是终极方案：
-  + 请前往 [release 页面](https://github.com/zerolfx/shanbay-helper/releases) 下载 zip 文件，解压到某一个本地目录（该目录必须保留，删除后会导致之后安装的插件失效）。
-  + 在浏览器的菜单中，找到扩展程序并打开。
-  + 勾选“开发者模式”。
-  + 选择“加载已解压的扩展程序”并选择刚刚解压后的那个目录，确认后即可完成安装。
-  
-### 题外话
+1. 下载或克隆本仓库。
+2. 在 Chrome 地址栏打开 `chrome://extensions/`。
+3. 开启右上角“开发者模式”。
+4. 点击“加载已解压的扩展程序”，选择本仓库根目录。
+5. 打开扇贝单词网页版并进入学习或单词详情页。
 
-+ 为什么要写这个插件？
-  + 作为课程项目
-  + 原有的扇贝 Chrome 插件在扇贝网页版大修之后主要功能失效了，而且作者不再维护（至少好几个月）。
-  + 作为曾经的扇贝用户还是对扇贝有点感情的。
-+ 为什么不支持网页查词及添加到生词本功能？因为不想做重复劳动，这里推荐和[这个插件](https://github.com/maicss/chrome-shanbay-v2)配合使用。
+升级代码后，在 `chrome://extensions/` 中点击本扩展的“重新加载”，再刷新扇贝页面。
 
-### For Developer
+## 权限与隐私
 
-+ open Developer mode in [chrome://extensions/](chrome://extensions/)
-+ click "Load unpacked" button
-+ select the directory of this project
-+ develop & enjoy yourself
+扩展只申请一个额外主机权限：
 
+- `https://dict.youdao.com/*`：根据当前显示的单词读取公开词典页面。
+
+扩展不会读取扇贝账号、Cookie 或学习记录，也不会向远端发送除当前单词以外的页面内容。当前单词会被发送给有道词典以获取补充释义；断词参考完全在本地计算。词典结果只在内存中短暂缓存，Chrome 关闭后台 Service Worker 后缓存会自动消失。
+
+完整的数据用途、保留时间和权限说明见 [`PRIVACY.md`](PRIVACY.md)。该页面同时作为 Chrome Web Store 的公开隐私政策。
+
+## 与旧版的差异
+
+- 已从 Manifest V2 迁移到 Manifest V3，后台页改为按需运行的 Service Worker。
+- 已移除 jQuery 和失效的 `popup.html` 引用。
+- 已移除 Wordsmyth 依赖。该网站现在会返回 Cloudflare 验证页，无法继续可靠抓取；新版将 `hyphen` 1.14.1 核心和 en-US 规则随扩展打包，本地给出断词参考。这样不需要 API 密钥、额外主机权限或远程脚本。
+- 已移除“移动并合并笔记 DOM”。直接移动 React 管理的节点会导致新版扇贝页面状态错乱；新版不会破坏扇贝自身组件树。
+- 已取消对整个 `*.shanbay.com` 的宽泛权限，页面注入范围只保留扇贝单词网页版。
+
+## 开发与测试
+
+项目保持无构建依赖，Chrome 可以直接加载仓库根目录。
+
+```text
+npm test
+npm run build
+```
+
+测试使用 Node.js 内置测试运行器，检查 MV3 清单、权限边界、Service Worker 消息处理、请求编码、错误路径和本地断词规则，不需要安装第三方包。构建命令会验证清单引用并在 `dist/` 生成 `manifest.json` 位于根目录的确定性 Chrome Web Store ZIP；GitHub Actions 会在每次 push、Pull Request 和手动触发时自动测试并上传该 ZIP 构建产物。
+
+发布前建议至少手工验证：
+
+1. 在 `chrome://extensions/` 中能够无错误加载扩展。
+2. 单词详情页能显示释义、断词参考、例句和折叠的扩展内容。
+3. 连续切换单词时不会重复插入面板或显示上一个单词的数据。
+4. 断网或词典无结果时，扇贝原释义仍然可见。
+5. 在深色模式和窄屏窗口下布局正常。
+
+## 兼容性说明
+
+页面适配基于扇贝当前仍在使用的 `StudyPage`、`VocabPronounce` 和 `BayTrans` 组件标识，并避免依赖构建产生的哈希后缀。扇贝或有道如果再次大幅调整页面结构，解析规则仍可能需要更新。
+
+## 第三方组件
+
+本仓库随扩展分发 `hyphen` 1.14.1 的核心与 en-US 规则。许可证和来源说明见 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。所有脚本均从扩展包本地加载，没有使用 CDN 或其他远程执行代码。

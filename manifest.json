@@ -1,34 +1,39 @@
 {
+  "manifest_version": 3,
   "name": "扇贝助手重制版",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "author": "zerol",
-  "description": "为扇贝单词网页版添加免费的柯林斯释义，以及一些额外的小功能。",
-  "manifest_version": 2,
-  "background": {
-    "scripts": [
-      "third-party/jquery-3.4.1.js",
-      "src/js/background.js"
-    ]
+  "description": "为扇贝单词网页版补充柯林斯双语释义、断词参考、词组、近义词和词语辨析。",
+  "icons": {
+    "128": "static/icon128.png"
   },
-  "icons": { "128": "static/icon128.png" },
-  "browser_action": {
+  "action": {
     "default_icon": "static/icon128.png",
-    "default_popup": "popup.html",
     "default_title": "扇贝助手重制版"
+  },
+  "background": {
+    "service_worker": "src/js/background.js"
   },
   "content_scripts": [
     {
-      "css": ["src/css/words.css"],
+      "matches": [
+        "https://web.shanbay.com/wordsweb/*"
+      ],
+      "css": [
+        "src/css/words.css"
+      ],
       "js": [
-        "third-party/jquery-3.4.1.js",
+        "third-party/hyphen-en-us.js",
+        "third-party/hyphen.js",
         "src/js/words.js"
       ],
-      "matches": ["https://web.shanbay.com/wordsweb/*"]
+      "run_at": "document_idle"
     }
   ],
-  "permissions": [
-    "https://dict.youdao.com/",
-    "https://www.wordsmyth.net/",
-    "*://*.shanbay.com/*"
-  ]
+  "host_permissions": [
+    "https://dict.youdao.com/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }
